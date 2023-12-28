@@ -80,9 +80,9 @@ export function app(): express.Express {
         var seo: any = {
           title: 'Veterinarian Tube',
           description:
-            'The Umbrella platform for All freedom based projects worldwide',
+            'Speak face-to-face with local veterinarians or veterinarians worldwide, Social Network for animal lovers!',
           image:
-            'https://video.veterinarian.tube/assets/banner/Healing-Tube-Logo.jpg',
+            'https://video.veterinarian.tube/assets/banner/veterinarian-logo.jpg',
           site: 'https://video.veterinarian.tube/',
           url: 'https://video.veterinarian.tube' + params,
           keywords: 'VeterinarianTube',
@@ -126,7 +126,7 @@ export function app(): express.Express {
           const pdhtml = document.createElement('div');
           pdhtml.innerHTML = post?.postdescription || post?.metadescription;
           const talent = {
-            name: post?.title || post?.albumname || 'Healing.Tube Post',
+            name: post?.title || post?.albumname || 'Veterinarian.tube Post',
             description: pdhtml?.textContent || 'Post content',
             image: post?.thumbfilename || post?.metaimage || post?.imageUrl,
           };
