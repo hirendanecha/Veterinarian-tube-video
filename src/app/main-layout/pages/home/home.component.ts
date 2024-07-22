@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   searchChannelData: any = [];
   searchPostData: any = [];
   searchResults: number;
-
+  advertisementDataList: any = [];
   notificationId: number;
   searchText: string;
 
@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     // private seoService: SeoService,
     private seoService:SeoService,
   ) {
-    this.profileId = JSON.parse(this.authService.getUserData() as any)?.Id;
+    this.profileId = JSON.parse(this.authService.getUserData() as any)?.profileId;
     this.userId = JSON.parse(this.authService.getUserData() as any)?.UserID;
     this.channelId = +localStorage.getItem('channelId');
 
@@ -77,6 +77,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.recommendedLoadMore();
+    this.getadvertizements()
   }
 
   ngAfterViewInit(): void {
@@ -266,5 +267,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.searchChannelData = null;
     this.searchPostData = null;
     this.searchResults = null;
+  }
+  getadvertizements(): void {
+    this.commonService.getAdvertisement().subscribe({
+      next: (res: any) => {
+        this.advertisementDataList = res;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 }
